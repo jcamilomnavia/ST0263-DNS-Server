@@ -1,0 +1,4 @@
+zone "widelab.tl" {
+    type master;
+    file "/etc/bind/zones/db.widelab.tl";
+};

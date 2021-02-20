@@ -1,0 +1,9 @@
+version: '3'
+services:
+  bind9:
+    image: eafit-bind9
+    restart: 'always'
+    ports:
+      - '53:53/udp'
+      - '53:53/tcp'
+      - '953:953/tcp'
