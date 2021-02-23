@@ -2,12 +2,8 @@ options {
     // Working directory
     directory "/var/cache/bind";
 
-    // Do not allow access to cache
-    allow-query-cache { none; };
     // This is the default
     allow-query { any; };
-    // Do not provide recursive service
-    recursion no;
 
     listen-on { any; };
 

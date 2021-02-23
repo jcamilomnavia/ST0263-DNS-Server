@@ -11,9 +11,9 @@ $TTL    3600
      IN      NS      ns2.widelab.tk.
 
 ; name servers - A records
-ns1.widelab.tk.     IN      A           172.100.0.2
-ns2.widelab.tk.     IN      A           172.100.0.2
+ns1.widelab.tk.     IN      A           100.25.73.61
+ns2.widelab.tk.     IN      A           18.214.202.100
 
-widelab.tk.         IN      A           172.100.0.3
-www.widelab.tk.     IN      CNAME       172.100.0.3
-mail.widelab.tk.    IN      A           172.100.0.4
+widelab.tk.         IN      A           35.169.6.223
+www.widelab.tk.     IN      CNAME       widelab.tk.
+mail.widelab.tk.    IN      A           18.214.202.100
