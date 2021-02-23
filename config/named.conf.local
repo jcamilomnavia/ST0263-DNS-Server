@@ -1,6 +1,6 @@
-zone "widelab.tl" {
+zone "widelab.tk" {
     type master;
-    file "/etc/bind/zones/db.widelab.tl";
+    file "/etc/bind/zones/db.widelab.tk";
     // IP addresses of slave servers allowed to
     // transfer example.com
     allow-transfer {
@@ -9,7 +9,7 @@ zone "widelab.tl" {
      };
 };
 
-zone "widelab.tl" {
+zone "widelab.tk" {
      type slave;
      file "eng.example.com.bk";
      // IP address of eng.example.com master server
