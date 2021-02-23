@@ -4,14 +4,6 @@ zone "widelab.tk" {
     // IP addresses of slave servers allowed to
     // transfer example.com
     allow-transfer {
-      192.168.4.14;
-      192.168.5.53;
+      18.214.202.100
      };
-};
-
-zone "widelab.tk" {
-     type slave;
-     file "eng.example.com.bk";
-     // IP address of eng.example.com master server
-     masters { <IPV4>; };
 };
