@@ -1,17 +1,13 @@
 options {
-    // Working directory
     directory "/var/cache/bind";
-
-    // Do not allow access to cache
     allow-query-cache { none; };
-    // This is the default
+
     allow-query { any; };
-    // Do not provide recursive service
+
     recursion no;
 
     listen-on { any; };
 
-    // Google servers
     forwarders {
             8.8.8.8;
             8.8.4.4;
