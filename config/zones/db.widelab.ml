@@ -19,4 +19,4 @@ mail    IN      A           18.214.202.100
 
         IN      CNAME       server
 www     IN      CNAME       server
-mail    IN      MX          1 widelab.ml.
+        IN      MX          1 mail
