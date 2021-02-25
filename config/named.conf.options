@@ -8,9 +8,4 @@ options {
 
     listen-on { any; };
 
-    forwarders {
-        100.25.73.61
-        8.8.8.8;
-        //8.8.4.4;
-    };
 };
