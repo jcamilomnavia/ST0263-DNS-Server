@@ -1,6 +1,5 @@
-zone "widelab.tk" {
+zone "widelab.tl" {
      type slave;
-     file "/etc/bind/zones/db.widelab.tk";
-     // IP address of eng.example.com master server
+     file "db.widelab.tl";
      masters { 100.25.73.61; };
 };
