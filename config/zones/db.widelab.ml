@@ -14,8 +14,9 @@ $TTL    604800
 ns1.widelab.ml.     IN      A           100.25.73.61
 ns2.widelab.ml.     IN      A           18.214.202.100
 
-        IN      A           35.169.6.223
+server  IN      A           35.169.6.223
 mail    IN      A           18.214.202.100
 
-www     IN      CNAME       widelab.ml.
+        IN      CNAME       server
+www     IN      CNAME       server
 mail    IN      MX          1 widelab.ml.
