@@ -1,6 +1,6 @@
 $TTL    604800
 @       IN      SOA     ns1.widelab.ml. root.widelab.ml. (
-                  10    ; Serial
+                11     ; Serial
              604800     ; Refresh
               86400     ; Retry
             2419200     ; Expire
@@ -11,10 +11,11 @@ $TTL    604800
      IN      NS      ns2.widelab.ml.
 
 ; name servers - A records
-ns1.widelab.ml.     IN      A       100.25.73.61 
-ns2.widelab.ml.     IN      A       18.214.202.100 
+ns1.widelab.ml.     IN      A           100.25.73.61
+ns2.widelab.ml.     IN      A           18.214.202.100
 
-                    IN      A       35.169.6.223 
-mail.widelab.ml.    IN      A       18.214.202.100 
+server          IN      A           35.169.6.223
+mail            IN      A           18.214.202.100
 
-www                 IN      CNAME   server.widelab.ml. 
+www             IN      CNAME       server
+                IN      MX    10    mail.widelab.ml.
