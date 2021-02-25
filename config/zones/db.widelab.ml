@@ -17,5 +17,5 @@ ns2.widelab.ml.     IN      A           18.214.202.100
 server          IN      A           35.169.6.223
 mail            IN      A           18.214.202.100
 
-www             IN      CNAME       server
                 IN      MX    10    mail.widelab.ml.
+www                   CNAME       server
