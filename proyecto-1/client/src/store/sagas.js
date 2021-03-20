@@ -3,6 +3,7 @@
 import { routinePromiseWatcherSaga } from 'redux-saga-routines';
 import { all, call } from 'redux-saga/effects';
 import queueWatcher from 'modules/queue/sagas';
+import channelWatcher from 'modules/channels/sagas';
 
 function* rootSaga() {
   try {
@@ -12,6 +13,7 @@ function* rootSaga() {
 
       // app
       call(queueWatcher),
+      call(channelWatcher),
     ]);
   } catch (error) {
     throw error;

@@ -1,4 +1,5 @@
-import { listQueue } from 'modules/queue/actions';
+import { cleanChannelMessages, listChannel } from 'modules/channels/actions';
+import { cleanQueueMessages, listQueue } from 'modules/queue/actions';
 import Loadable from 'react-loadable';
 import ScreenLoading from 'views/ui/screen-loading';
 
@@ -28,25 +29,28 @@ const routes = [
     component: Root,
     exact: true,
     privated: true,
+    actions: [cleanChannelMessages, cleanQueueMessages],
   },
   {
     path: '/login',
     component: Root,
     exact: true,
     privated: true,
+    actions: [cleanChannelMessages, cleanQueueMessages],
   },
   {
     path: '/room',
     component: ListTypes,
     exact: true,
     privated: true,
+    actions: [cleanChannelMessages, cleanQueueMessages],
   },
   {
     path: '/room/:type',
     component: ListRooms,
     exact: true,
     privated: true,
-    actions: [listQueue],
+    actions: [listQueue, listChannel, cleanChannelMessages, cleanQueueMessages],
   },
   {
     path: '/room/:type/:id',

@@ -7,6 +7,7 @@ import { rootPersistConfig } from './persistor';
 import routerHistory from './history';
 
 import queue from 'modules/queue/reducer';
+import channel from 'modules/channels/reducer';
 
 const appReducer = combineReducers({
   // external
@@ -15,6 +16,7 @@ const appReducer = combineReducers({
 
   // app
   queue,
+  channel,
 });
 
 const actions = [];

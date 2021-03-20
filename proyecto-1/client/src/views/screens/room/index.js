@@ -18,12 +18,20 @@ import {
   pushMessage as pushQueueMessage,
   pullMessage as pullQueueMessage,
 } from 'modules/queue/actions';
+import { getChannelMessages } from 'modules/channels/selectors';
+import {
+  pullMessageChannel,
+  pushMessageChannel,
+} from 'modules/channels/actions';
 
 const Room = () => {
   const { type, id } = useParams();
   const dispatch = useDispatch();
 
-  const messages = useSelector(getQueueMessages);
+  const queueMessages = useSelector(getQueueMessages);
+  const channelMessages = useSelector(getChannelMessages);
+
+  const messages = type === 'queue' ? queueMessages : channelMessages;
 
   const [message, setNewMessage] = useState('');
   const handleMessage = (e) => {
@@ -40,12 +48,23 @@ const Room = () => {
         })
       );
     }
+    if (type === 'channel') {
+      dispatch(
+        pushMessageChannel({
+          message: { content: message, date: new Date() },
+          id,
+        })
+      );
+    }
     setNewMessage('');
   };
 
   const receiveMessage = () => {
     if (type === 'queue') {
       dispatch(pullQueueMessage(id));
+    }
+    if (type === 'channel') {
+      dispatch(pullMessageChannel(id));
     }
   };
 

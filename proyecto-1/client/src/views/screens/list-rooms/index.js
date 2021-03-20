@@ -14,12 +14,15 @@ import {
 } from 'reactstrap';
 import { getQueues } from 'modules/queue/selectors';
 import { createQueue, joinQueue } from 'modules/queue/actions';
+import { getChannels } from 'modules/channels/selectors';
+import { createChannel, joinChannel } from 'modules/channels/actions';
 
 const ListRooms = () => {
   const dispatch = useDispatch();
 
   const { type } = useParams();
   const queueItems = useSelector(getQueues);
+  const channelItems = useSelector(getChannels);
 
   const [room, setRoom] = useState(null);
   const [newRoom, setNewRoom] = useState(null);
@@ -36,17 +39,30 @@ const ListRooms = () => {
     if (type === 'queue') {
       dispatch(joinQueue(room));
     }
+    if (type === 'channel') {
+      dispatch(joinChannel(room));
+    }
   };
 
   const createRoom = () => {
     if (type === 'queue') {
       dispatch(createQueue(newRoom));
     }
+    if (type === 'channel') {
+      dispatch(createChannel(newRoom));
+    }
   };
 
   const optionsItems = () => {
     if (type === 'queue') {
       return queueItems.map((item) => (
+        <option key={item} value={item}>
+          {item}
+        </option>
+      ));
+    }
+    if (type === 'channel') {
+      return channelItems.map((item) => (
         <option key={item} value={item}>
           {item}
         </option>

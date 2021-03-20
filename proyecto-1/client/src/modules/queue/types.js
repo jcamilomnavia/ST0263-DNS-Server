@@ -4,3 +4,4 @@ export const JOIN_QUEUE = 'JOIN_QUEUE';
 export const LEAVE_QUEUE = 'LEAVE_QUEUE';
 export const PUSH_MESSAGE = 'PUSH_MESSAGE';
 export const PULL_MESSAGE = 'PULL_MESSAGE';
+export const CLEAN_QUEUE_MESSAGES = 'CLEAN_QUEUE_MESSAGES';

@@ -1,3 +1,4 @@
+import { createAction } from 'redux-actions';
 import { createRoutine } from 'redux-saga-routines';
 import {
   LIST_QUEUE,
@@ -6,6 +7,7 @@ import {
   LEAVE_QUEUE,
   PUSH_MESSAGE,
   PULL_MESSAGE,
+  CLEAN_QUEUE_MESSAGES,
 } from './types';
 
 export const listQueue = createRoutine(LIST_QUEUE);
@@ -14,3 +16,4 @@ export const joinQueue = createRoutine(JOIN_QUEUE);
 export const leaveQueue = createRoutine(LEAVE_QUEUE);
 export const pushMessage = createRoutine(PUSH_MESSAGE);
 export const pullMessage = createRoutine(PULL_MESSAGE);
+export const cleanQueueMessages = createAction(CLEAN_QUEUE_MESSAGES);
