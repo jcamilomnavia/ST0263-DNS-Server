@@ -5,23 +5,16 @@ import { QueueService } from 'src/queue/queue.service';
 export class P2pQueueService {
   private queues = {};
 
+  queueExists(name) {
+    return this.queues.hasOwnProperty(name);
+  }
+
   create(id) {
     if (this.queueExists(id)) {
       throw new Error(`Cannot create queue: queue already exists: ${id}`);
     }
     this.queues[id] = new QueueService();
     return this.queues[id];
-  }
-
-  queueExists(name) {
-    return this.queues.hasOwnProperty(name);
-  }
-
-  retrieveFromQueue(id) {
-    if (this.queueExists(id)) {
-      return this.queues[id].pull();
-    }
-    throw new Error(`Queue does not exists: ${id}`);
   }
 
   pushToQueue(id, message) {
@@ -35,5 +28,16 @@ export class P2pQueueService {
     for (const [key] of Object.entries(this.queues)) {
       this.queues[key].push(message);
     }
+  }
+
+  retrieveFromQueue(id) {
+    if (this.queueExists(id)) {
+      return this.queues[id].pull();
+    }
+    throw new Error(`Queue does not exists: ${id}`);
+  }
+
+  list() {
+    return Object.keys(this.queues);
   }
 }
