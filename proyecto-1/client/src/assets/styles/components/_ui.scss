@@ -1,0 +1,46 @@
+/* UI LOADER */
+.hot-ui--loader-container {
+  position: relative;
+  width: 100%;
+
+  &.main {
+    font-size: rem(44);
+    height: 100vh;
+  }
+
+  .hot-ui--loader {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: absolute;
+
+    &:after {
+      animation: hot-ui--loader-back 1.5s linear infinite;
+      border: medium solid $colorGradient2;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      border-radius: 50%;
+      content: ' ';
+      display: inline-block;
+      height: 2em;
+      width: 2em;
+      position: absolute;
+    }
+
+    &:before {
+      animation: hot-ui--loader 1.5s linear infinite;
+      border: medium solid $colorContrast;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-radius: 50%;
+      content: ' ';
+      display: inline-block;
+      height: 2em;
+      width: 2em;
+      position: absolute;
+    }
+  }
+}
+/* END UI LOADER */

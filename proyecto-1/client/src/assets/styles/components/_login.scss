@@ -1,0 +1,50 @@
+.main-login {
+  backdrop-filter: blur(10px);
+  background: $colorContrast;
+  box-shadow: 25px 25px 40px $colorGradient2, -25px -25px 40px $colorContrast;
+  border-radius: 18px;
+  border: none;
+  &--form {
+    &__label {
+      @include fonts(black, $fontRobotoLight, 20);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-align: center;
+      width: 100%;
+      padding: 0px 0 5px;
+    }
+    &__input {
+      @include fonts(black, $fontRobotoLight, 17);
+      border-radius: 10px;
+      border: none;
+      box-shadow: 5px 5px 10px $colorGradient2, -5px -5px 10px $colorContrast;
+    }
+    &__button-append {
+      @include fonts(white, $fontRobotoRegular, 17);
+      border-radius: 10px;
+      border: none;
+      box-shadow: 5px 5px 10px $colorGradient2, -5px -5px 10px $colorContrast;
+      background-color: $colorGradient2;
+      height: 100%;
+      &:hover,
+      &:focus {
+        background-color: $colorHover;
+        outline: none;
+      }
+    }
+    &__button {
+      @include fonts(white, $fontRobotoRegular, 17);
+      border-radius: 10px;
+      background-color: $colorGradient2;
+      border: none;
+      margin: 20px auto 0px;
+      text-align: center;
+      width: 60%;
+      &:hover,
+      &:focus {
+        background-color: $colorHover;
+        outline: none;
+      }
+    }
+  }
+}
