@@ -30,6 +30,13 @@ export class ChannelsController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Post('/unsubscribe')
+  unsubscribe(@Body() subscribeToChannel: any, @Req() req: any) {
+    const { id, consumer } = subscribeToChannel;
+    return this.channelService.unsubscribe(id, consumer, req.user);
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Post('/push')
   push(@Body() pushMessageDto: any) {
     const { message, id } = pushMessageDto;

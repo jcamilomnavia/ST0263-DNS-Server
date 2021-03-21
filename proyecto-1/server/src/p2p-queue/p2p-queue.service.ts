@@ -9,6 +9,14 @@ export class P2pQueueService {
     return this.queues.hasOwnProperty(name);
   }
 
+  delete(id) {
+    if (!this.queueExists(id)) {
+      throw new Error(`Cannot delete queue: queue does not exists: ${id}`);
+    }
+    delete this.queues[id];
+    return true;
+  }
+
   create(id, user = null) {
     if (this.queueExists(id)) {
       if (user && id === user.username) {

@@ -2,7 +2,7 @@ import { push } from 'connected-react-router';
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 import http from 'utils/http';
 
-import { login, register } from './actions';
+import { login, logout, register } from './actions';
 
 export function* loginSaga({ payload }) {
   try {
@@ -14,6 +14,18 @@ export function* loginSaga({ payload }) {
     yield put(login.failure(error));
   } finally {
     yield put(login.fulfill());
+  }
+}
+
+export function* logoutSaga() {
+  try {
+    yield put(logout.request());
+    yield put(push('/'));
+    yield put(logout.success());
+  } catch (error) {
+    yield put(logout.failure(error));
+  } finally {
+    yield put(logout.fulfill());
   }
 }
 
@@ -32,5 +44,6 @@ export function* registerSaga({ payload }) {
 
 export default function* authWatcher() {
   yield all([takeLatest(login.TRIGGER, loginSaga)]);
+  yield all([takeLatest(logout.TRIGGER, logoutSaga)]);
   yield all([takeLatest(register.TRIGGER, registerSaga)]);
 }

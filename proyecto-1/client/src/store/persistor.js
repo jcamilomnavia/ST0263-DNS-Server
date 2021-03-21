@@ -12,7 +12,7 @@ export const rootPersistConfig = {
   key: 'root',
   storage: localForage,
   debug: isDebug,
-  whitelist: ['me', 'queue', 'channel'],
+  whitelist: ['me', 'queue', 'channel', 'auth'],
 };
 
 export const authPersistConfig = {

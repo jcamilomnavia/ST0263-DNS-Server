@@ -32,6 +32,18 @@ export class ChannelsService {
     throw new Error(`Cannot find Channel:  ${id}`);
   }
 
+  unsubscribe(id, consumer, user) {
+    if (this.channelExists(id)) {
+      if (consumer === user.username) {
+        return this.channels[id].delete(consumer, user);
+      }
+      throw new Error(
+        `You need to be authenticated with the user to unsuscribe from:  ${id}`,
+      );
+    }
+    throw new Error(`Cannot find Channel:  ${id}`);
+  }
+
   pushToChannel(id, message) {
     if (this.channelExists(id)) {
       return this.channels[id].pushBroadcast(message);

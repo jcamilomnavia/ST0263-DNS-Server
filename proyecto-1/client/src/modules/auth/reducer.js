@@ -1,7 +1,7 @@
 /* eslint-disable default-case */
 /* eslint-disable no-param-reassign */
 import produce from 'immer';
-import { login, register } from './actions';
+import { login, logout, register } from './actions';
 
 const initialState = {
   loading: false,
@@ -25,6 +25,11 @@ const reducer = produce((draft, { type, payload }) => {
       break;
     case register.SUCCESS:
       draft.me = payload;
+      break;
+    case logout.SUCCESS:
+      draft.me = null;
+      draft.token = null;
+      draft.isLoggedIn = false;
       break;
     case login.FAILURE:
     case register.FAILURE:

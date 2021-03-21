@@ -34,7 +34,7 @@
       @include fonts(#5a5858, $fontRobotoMedium, 16);
       letter-spacing: 2px;
       margin: 0;
-      padding: 15px 0;
+      padding: 10px 0;
       position: fixed;
       text-transform: uppercase;
       text-align: center;
@@ -111,6 +111,35 @@
     color: #4bb543 !important;
     svg {
       color: #4bb543 !important;
+    }
+  }
+}
+.back-button {
+  position: absolute;
+  background-color: transparent;
+  top: 0;
+  left: 10px;
+  border: none;
+  &:hover,
+  &:focus {
+    background-color: transparent !important;
+    color: #4bb543 !important;
+    svg {
+      color: #4bb543 !important;
+    }
+  }
+}
+
+.unsuscribe {
+  background-color: transparent;
+  border: none;
+  color: #f32013;
+  &:hover,
+  &:focus {
+    background-color: transparent !important;
+    color: #cc160ca4 !important;
+    svg {
+      color: #cc160ca4 !important;
     }
   }
 }

@@ -7,10 +7,19 @@ import {
   faBars,
   faPaperPlane,
   faSyncAlt,
+  faArrowLeft,
+  faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import App from './App';
 
-library.add(faTimes, faBars, faPaperPlane, faSyncAlt);
+library.add(
+  faTimes,
+  faBars,
+  faPaperPlane,
+  faSyncAlt,
+  faArrowLeft,
+  faSignOutAlt
+);
 const renderMethod = module.hot ? render : hydrate;
 
 renderMethod(<App />, document.getElementById('root'));

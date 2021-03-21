@@ -25,7 +25,8 @@ const Login = () => {
     setUsername(e.target.value);
   };
 
-  const handleLogin = () => {
+  const handleRegister = (e) => {
+    e.preventDefault();
     dispatch(register({ username, password }));
   };
 
@@ -37,7 +38,7 @@ const Login = () => {
             <Card className='main-login'>
               <CardBody className='py-5'>
                 <h3 className='text-center main-login__title mb-4'>REGISTER</h3>
-                <Form className='d-flex flex-column'>
+                <Form onSubmit={handleRegister} className='d-flex flex-column'>
                   <Input
                     value={username}
                     className='main-login--form__input'
@@ -52,11 +53,15 @@ const Login = () => {
                     onChange={handleChangePassword}
                   />
                   <Button
-                    onClick={handleLogin}
+                    type='submit'
+                    onClick={handleRegister}
                     className='main-login--form__button'
                   >
                     Register
                   </Button>
+                  <a href='/' className='text-center mt-3'>
+                    Login
+                  </a>
                 </Form>
               </CardBody>
             </Card>

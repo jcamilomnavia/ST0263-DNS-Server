@@ -36,10 +36,11 @@ const reducer = produce((draft, { type, payload }) => {
       break;
     case joinChannel.SUCCESS:
     case createChannel.SUCCESS:
-      draft.Channel = payload;
+      draft.channel = payload;
       break;
     case leaveChannel.SUCCESS:
-      draft.Channel = null;
+      draft.channel = null;
+      draft.messages = [];
       break;
     case listChannel.FAILURE:
     case createChannel.FAILURE:

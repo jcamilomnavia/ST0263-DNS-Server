@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import {
@@ -16,6 +16,9 @@ import { getQueues } from 'modules/queue/selectors';
 import { createQueue, joinQueue } from 'modules/queue/actions';
 import { getChannels } from 'modules/channels/selectors';
 import { createChannel, joinChannel } from 'modules/channels/actions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
+import { logout } from 'modules/auth/actions';
 
 const ListRooms = () => {
   const dispatch = useDispatch();
@@ -33,6 +36,10 @@ const ListRooms = () => {
 
   const handleChangeRoom = (e) => {
     setRoom(e.target.value);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
   };
 
   const goToRoom = () => {
@@ -71,12 +78,21 @@ const ListRooms = () => {
   };
 
   return (
-    <section className='h-100'>
+    <section className='h-100 position-relative'>
+      <Button onClick={handleLogout} className='position-absolute main-logout'>
+        Logout
+      </Button>
       <Container className='h-100'>
         <Row className='justify-content-center align-items-center h-75'>
           <Col xs={10} md={8} lg={6} xl={6}>
             <Card className='main-login'>
               <CardBody className='py-5'>
+                <Link
+                  to='/room'
+                  className='btn float-left back-button py-0 mt-2'
+                >
+                  <FontAwesomeIcon icon='arrow-left' color='#589fcf' />
+                </Link>
                 <Col className='d-flex flex-column'>
                   <label>Create a {type}</label>
                   <InputGroup>

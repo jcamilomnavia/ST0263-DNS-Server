@@ -1,3 +1,20 @@
 main {
   background: linear-gradient($colorGradient1 50%, $colorGradient2);
 }
+
+.main-logout {
+  right: 10px;
+  margin: 15px;
+  border-radius: 5px;
+  background-color: $colorGradient2;
+  border: none;
+  padding: 2px 25px;
+  font-family: $fontRobotoRegular;
+  font-size: rem(14);
+  &:hover,
+  &:focus {
+    background-color: $colorHover;
+    box-shadow: none;
+    outline: 0;
+  }
+}

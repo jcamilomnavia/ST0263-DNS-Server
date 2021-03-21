@@ -1,5 +1,6 @@
 import { push } from 'connected-react-router';
-import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { getMe } from 'modules/auth/selectors';
+import { all, call, put, select, takeLatest } from 'redux-saga/effects';
 import http from 'utils/http';
 
 import {
@@ -39,8 +40,7 @@ export function* createChannelSaga({ payload }) {
 export function* joinChannelSaga({ payload }) {
   try {
     yield put(joinChannel.request());
-    // const consumer = yield select()
-    const consumer = 'navia';
+    const { username: consumer } = yield select(getMe);
     yield call(http, 'channels/subscribe', 'post', { id: payload, consumer });
     yield put(push(`channel/${payload}`));
     yield put(joinChannel.success(payload));
@@ -51,17 +51,22 @@ export function* joinChannelSaga({ payload }) {
   }
 }
 
-// export function* leaveChannelSaga() {
-//   try {
-//     yield put(leaveChannel.request());
-//     const data = yield call();
-//     yield put(leaveChannel.success(data));
-//   } catch (error) {
-//     yield put(leaveChannel.failure(error));
-//   } finally {
-//     yield put(leaveChannel.fulfill());
-//   }
-// }
+export function* leaveChannelSaga({ payload }) {
+  try {
+    yield put(leaveChannel.request());
+    const { username: consumer } = yield select(getMe);
+    yield call(http, 'channels/unsubscribe', 'post', {
+      id: payload,
+      consumer,
+    });
+    yield put(push('/room/channel'));
+    yield put(leaveChannel.success());
+  } catch (error) {
+    yield put(leaveChannel.failure(error));
+  } finally {
+    yield put(leaveChannel.fulfill());
+  }
+}
 
 export function* pushMessageChannelSaga({ payload }) {
   try {
@@ -78,8 +83,7 @@ export function* pushMessageChannelSaga({ payload }) {
 export function* pullMessageChannelSaga({ payload }) {
   try {
     yield put(pullMessageChannel.request());
-    // const consumer = yield select()
-    const consumer = 'navia';
+    const { username: consumer } = yield select(getMe);
     const { data } = yield call(http, `channels/pull/${payload}/${consumer}`);
     if (data) {
       yield put(pullMessageChannel.success(data));
@@ -94,6 +98,7 @@ export function* pullMessageChannelSaga({ payload }) {
 export default function* channelWatcher() {
   yield all([takeLatest(listChannel.TRIGGER, listChannelSaga)]);
   yield all([takeLatest(joinChannel.TRIGGER, joinChannelSaga)]);
+  yield all([takeLatest(leaveChannel.TRIGGER, leaveChannelSaga)]);
   yield all([takeLatest(createChannel.TRIGGER, createChannelSaga)]);
   yield all([takeLatest(pushMessageChannel.TRIGGER, pushMessageChannelSaga)]);
   yield all([takeLatest(pullMessageChannel.TRIGGER, pullMessageChannelSaga)]);

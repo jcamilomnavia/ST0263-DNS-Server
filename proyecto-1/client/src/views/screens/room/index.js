@@ -20,9 +20,12 @@ import {
 } from 'modules/queue/actions';
 import { getChannelMessages } from 'modules/channels/selectors';
 import {
+  leaveChannel,
   pullMessageChannel,
   pushMessageChannel,
 } from 'modules/channels/actions';
+import { Link } from 'react-router-dom';
+import { logout } from 'modules/auth/actions';
 
 const Room = () => {
   const { type, id } = useParams();
@@ -36,6 +39,14 @@ const Room = () => {
   const [message, setNewMessage] = useState('');
   const handleMessage = (e) => {
     setNewMessage(e.target.value);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
+  const unsuscribeChannel = () => {
+    dispatch(leaveChannel(id));
   };
 
   const sendMessage = (e) => {
@@ -69,21 +80,30 @@ const Room = () => {
   };
 
   return (
-    <section className='h-100'>
+    <section className='h-100 position-relative'>
+      <Button onClick={handleLogout} className='position-absolute main-logout'>
+        Logout
+      </Button>
       <Container className='h-100'>
-        <Row className='justify-content-center align-items-center h-100'>
+        <Row className='justify-content-center align-content-center h-100'>
           <Col
             xs={12}
             md={10}
             lg={10}
             xl={10}
-            className='h-100 d-flex flex-column justify-content-center'
+            className='h-100 d-flex flex-column justify-content-center position-relative'
           >
             <Card className='main-chat h-75'>
               <CardBody className='py-0 px-0'>
                 <section className='main-chat--container d-flex flex-column'>
                   <Row className='main-chat--container__room'>
                     <Col xs={12}>
+                      <Link
+                        to={`/room/${type}`}
+                        className='btn float-left back-button py-0'
+                      >
+                        <FontAwesomeIcon icon='arrow-left' color='#589fcf' />
+                      </Link>
                       {type} | {id}
                       <Button
                         onClick={receiveMessage}
@@ -91,6 +111,19 @@ const Room = () => {
                       >
                         <FontAwesomeIcon icon='sync-alt' color='#589fcf' />
                       </Button>
+                      {type === 'channel' && (
+                        <Button
+                          onClick={unsuscribeChannel}
+                          className='py-0 unsuscribe d-block text-center'
+                        >
+                          Unsuscribe
+                          <FontAwesomeIcon
+                            icon='sign-out-alt'
+                            color='danger'
+                            className='ml-2'
+                          />
+                        </Button>
+                      )}
                     </Col>
                   </Row>
                   <Row className='align-self-end align-content-end w-100 mx-0 overflow-scroll flex-grow-1'>
