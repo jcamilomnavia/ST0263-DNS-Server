@@ -1,4 +1,4 @@
-import { login } from 'modules/auth/actions';
+import { register } from 'modules/auth/actions';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
@@ -26,7 +26,7 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    dispatch(login({ username, password }));
+    dispatch(register({ username, password }));
   };
 
   return (
@@ -36,8 +36,7 @@ const Login = () => {
           <Col xs={10} md={6} lg={6} xl={6}>
             <Card className='main-login'>
               <CardBody className='py-5'>
-                <h3 className='text-center main-login__title mb-4'>LOGIN</h3>
-
+                <h3 className='text-center main-login__title mb-4'>REGISTER</h3>
                 <Form className='d-flex flex-column'>
                   <Input
                     value={username}
@@ -56,7 +55,7 @@ const Login = () => {
                     onClick={handleLogin}
                     className='main-login--form__button'
                   >
-                    Login
+                    Register
                   </Button>
                 </Form>
               </CardBody>

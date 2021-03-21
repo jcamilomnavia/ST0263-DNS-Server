@@ -4,6 +4,10 @@
   box-shadow: 25px 25px 40px $colorGradient2, -25px -25px 40px $colorContrast;
   border-radius: 18px;
   border: none;
+  &__title {
+    @include fonts(black, $fontRobotoLight, 24);
+    letter-spacing: 2px;
+  }
   &--form {
     &__label {
       @include fonts(black, $fontRobotoLight, 20);

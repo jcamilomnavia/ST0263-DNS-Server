@@ -8,6 +8,11 @@ const Root = Loadable({
   loading: ScreenLoading,
 });
 
+const Register = Loadable({
+  loader: () => import('views/screens/register'),
+  loading: ScreenLoading,
+});
+
 const ListRooms = Loadable({
   loader: () => import('views/screens/list-rooms'),
   loading: ScreenLoading,
@@ -34,6 +39,13 @@ const routes = [
   {
     path: '/login',
     component: Root,
+    exact: true,
+    published: true,
+    actions: [cleanChannelMessages, cleanQueueMessages],
+  },
+  {
+    path: '/register',
+    component: Register,
     exact: true,
     published: true,
     actions: [cleanChannelMessages, cleanQueueMessages],

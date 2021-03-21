@@ -21,6 +21,7 @@ export function* registerSaga({ payload }) {
   try {
     yield put(register.request());
     yield call(http, 'register', 'post', payload);
+    yield put(push('/login'));
     yield put(register.success(payload));
   } catch (error) {
     yield put(register.failure(error));
