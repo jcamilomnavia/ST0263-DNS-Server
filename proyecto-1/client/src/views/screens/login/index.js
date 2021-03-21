@@ -1,3 +1,6 @@
+import { login } from 'modules/auth/actions';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   Col,
   Row,
@@ -10,6 +13,22 @@ import {
 } from 'reactstrap';
 
 const Login = () => {
+  const dispatch = useDispatch();
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleChangeUsername = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handleLogin = () => {
+    dispatch(login({ username, password }));
+  };
+
   return (
     <section className='h-100'>
       <Container className='h-100'>
@@ -19,10 +38,24 @@ const Login = () => {
               <CardBody className='py-5'>
                 <Form className='d-flex flex-column'>
                   <Input
+                    value={username}
                     className='main-login--form__input'
                     placeholder='Enter a Nickname'
-                  ></Input>
-                  <Button className='main-login--form__button'>Login</Button>
+                    onChange={handleChangeUsername}
+                  />
+                  <Input
+                    type='password'
+                    value={password}
+                    className='main-login--form__input mt-4'
+                    placeholder='Enter password'
+                    onChange={handleChangePassword}
+                  />
+                  <Button
+                    onClick={handleLogin}
+                    className='main-login--form__button'
+                  >
+                    Login
+                  </Button>
                 </Form>
               </CardBody>
             </Card>

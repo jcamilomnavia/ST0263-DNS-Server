@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-// import { isChatConnected } from 'modules/ws-chat/selectors';
+import { isLoggedIn } from 'modules/auth/selectors';
 import PrivateRoute from './private-route';
 
 const mapStateToProps = (state) => ({
-  isConnected: true,
+  isConnected: isLoggedIn(state),
 });
 
 export default connect(mapStateToProps)(PrivateRoute);

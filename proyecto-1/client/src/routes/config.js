@@ -28,14 +28,14 @@ const routes = [
     path: '/',
     component: Root,
     exact: true,
-    privated: true,
+    published: true,
     actions: [cleanChannelMessages, cleanQueueMessages],
   },
   {
     path: '/login',
     component: Root,
     exact: true,
-    privated: true,
+    published: true,
     actions: [cleanChannelMessages, cleanQueueMessages],
   },
   {

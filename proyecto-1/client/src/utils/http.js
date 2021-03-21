@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { store } from '../store';
 
 let { REACT_APP_API_HOST } = process.env;
 
@@ -8,7 +9,9 @@ export default (
   data = null,
   params = null,
   withCredentials = false,
-  headers = {},
+  headers = {
+    Authorization: `Bearer ${store ? store.getState().auth.token : null}`,
+  },
   responseType = 'json',
   host = REACT_APP_API_HOST
 ) => {

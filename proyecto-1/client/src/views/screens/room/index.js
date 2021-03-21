@@ -68,8 +68,6 @@ const Room = () => {
     }
   };
 
-  console.log(messages);
-
   return (
     <section className='h-100'>
       <Container className='h-100'>

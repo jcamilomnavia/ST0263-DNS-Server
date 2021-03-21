@@ -8,9 +8,11 @@ import routerHistory from './history';
 
 import queue from 'modules/queue/reducer';
 import channel from 'modules/channels/reducer';
+import auth from 'modules/auth/reducer';
 
 const appReducer = combineReducers({
   // external
+  auth,
   form,
   router: connectRouter(routerHistory),
 
