@@ -6,6 +6,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Req,
 } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ChannelsService } from 'src/channels/channels.service';
@@ -23,9 +24,9 @@ export class ChannelsController {
 
   @UseGuards(JwtAuthGuard)
   @Post('/subscribe')
-  subscribe(@Body() subscribeToChannel: any) {
+  subscribe(@Body() subscribeToChannel: any, @Req() req: any) {
     const { id, consumer } = subscribeToChannel;
-    return this.channelService.subscribe(id, consumer);
+    return this.channelService.subscribe(id, consumer, req.user);
   }
 
   @UseGuards(JwtAuthGuard)

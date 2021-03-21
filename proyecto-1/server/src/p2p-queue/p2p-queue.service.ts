@@ -9,8 +9,11 @@ export class P2pQueueService {
     return this.queues.hasOwnProperty(name);
   }
 
-  create(id) {
+  create(id, user = null) {
     if (this.queueExists(id)) {
+      if (user && id === user.username) {
+        return true;
+      }
       throw new Error(`Cannot create queue: queue already exists: ${id}`);
     }
     this.queues[id] = new QueueService();

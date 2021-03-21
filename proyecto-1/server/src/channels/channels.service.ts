@@ -25,9 +25,9 @@ export class ChannelsService {
     return this.channels;
   }
 
-  subscribe(id, consumer) {
+  subscribe(id, consumer, user) {
     if (this.channelExists(id)) {
-      return this.channels[id].create(consumer);
+      return this.channels[id].create(consumer, user);
     }
     throw new Error(`Cannot find Channel:  ${id}`);
   }
