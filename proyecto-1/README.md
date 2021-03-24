@@ -34,7 +34,11 @@ Para esta práctica nos basamos en las instrucciones del documento inicial donde
  
  ### Diseño/Arquitectura
  ![image](https://user-images.githubusercontent.com/30262251/112245914-d9bf4d80-8c1f-11eb-936f-75e60b86674e.png)
+
 La arquitectura que implementamos para el proyecto se estructura de la siguiente manera:
 Servidor: Donde estará corriendo un API REST implementado en nest.js identificado como el middleware orientado a mensajes(MOM). Aquí se podrá realizar la autenticación de usuarios y se guardará en memoria RAM todos los datos recibidos. Estará corriendo sobre una máquina EC2 dedicada con una imagen ami, dentro de la máquina estará ejecutándose un docker con el API en el puerto 80.
 Cliente(s): Donde estará corriendo una aplicación implementada en react.js consumiendo el API REST para el envío y consumo de mensajes. Pueden haber tantas instancias del cliente como se desee. Estará corriendo sobre una máquina EC2 dedicada con una imagen ami, dentro de la máquina estará ejecutándose un docker con el API en el puerto 80.
+
+### Resultado
+Gracias al aprendizaje que obtuvimos se logró desplegar de manera efectiva y funcional el producto, consiguiendo así que la página http://momchat.ml/ nos permitirá visualizar la información de tantos los canales como las colas, teniendo en cuenta los mecanismos de recepción y envío de mensajes óptimos para el trabajo, además de que se demuestra la implementación de los requerimientos desde la parte de autenticidad hasta en detalles como la tolerancia a fallos. 
 
